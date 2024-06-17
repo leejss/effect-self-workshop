@@ -1,4 +1,4 @@
-import { Console, Effect, Option, pipe } from "effect";
+import { Console, Effect, Option } from "effect";
 // Checking nullable with Option and match
 
 const arg = process.argv[2] ?? null;
