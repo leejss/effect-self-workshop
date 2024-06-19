@@ -23,7 +23,8 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noPropertyAccessFromIndexSignature": false,
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "exactOptionalPropertyTypes": true
   },
   "include": ["src"]
 }
