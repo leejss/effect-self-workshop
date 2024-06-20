@@ -1,6 +1,6 @@
 // Define schema
-import { Effect, Console, Either } from "effect";
 import { Schema } from "@effect/schema";
+import { Effect } from "effect";
 
 console.log("# Parsing ====================");
 
@@ -65,4 +65,33 @@ Effect.runSync(program);
 // Handling extra properties -> when input has more properties than schema
 // ignore, error, preserve
 
-console.log("========================");
+const decodeWithExtraError = Schema.decodeUnknownSync(Config, {
+  onExcessProperty: "error",
+}); // throw error when extra properties
+try {
+  decodeWithExtraError({
+    prefixUrl: "https://example.com",
+    mode: "dev",
+  });
+} catch (error) {
+  console.log("decodeWithExtraError::", error);
+}
+
+const decodeWithExtraPreserve = Schema.decodeUnknownSync(Config, {
+  onExcessProperty: "preserve",
+});
+
+const preserveResult = decodeWithExtraPreserve({
+  prefixUrl: "https://example.com",
+  mode: "dev",
+});
+console.log("preserveResult::", preserveResult);
+
+// Only first error returns, or all errors return
+
+// Managing missing properties
+
+// 1. fill with undefined
+// 2. throw error
+
+// Schema.decodeUnknownSync(schema)(input, { exact: true })
