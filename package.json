@@ -2,6 +2,9 @@
   "name": "effect-self-workshop",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "json-app": "bun run src/cli/json-app/index.ts"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
